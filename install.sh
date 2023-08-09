@@ -50,6 +50,8 @@ COLOR VARIANTS:
   ubuntu                   Ubuntu default color folder version
   dracula                  Dracula default color folder version
   nord                     nord color folder version
+  redacted                 redacted yellow color folder version
+  noobilla                 Teddy Purple color folder version
 
   By default, only the standard one is selected.
 EOF
@@ -101,6 +103,10 @@ install_theme() {
       ;;
     nord)
       local -r theme_color='#4d576a'
+    redacted)
+      local -r theme_color='#F6C177'
+    noobilla)
+      local -r theme_color='#8a80e0'
       ;;
   esac
 
@@ -153,6 +159,24 @@ install_theme() {
         sed -i "s/${theme_color}/#dd86e0/g" "${THEME_DIR}/scalable/places/"default-user-desktop.svg
         sed -i '/\id="highlight"/s/opacity=".25"/opacity="0"/' "${THEME_DIR}/scalable/places/"default-user-desktop.svg
         sed -i "s/#5294e2/#bd93f9/g" "${THEME_DIR}/scalable/devices/"*.svg "${THEME_DIR}/32/devices/"*.svg
+if [[ "$1" == "redacted" ]]; then
+        sed -i '/\id="shadow"/s/#000000/#F6C177/' "${THEME_DIR}/scalable/apps/"*.svg "${THEME_DIR}/scalable/places/"default-*.svg
+        sed -i '/\id="shadow"/s/ opacity=".2"//' "${THEME_DIR}/scalable/apps/"*.svg "${THEME_DIR}/scalable/places/"default-*.svg
+        sed -i '/\id="bottom_layer"/s/#44475a/#F6C177/' "${THEME_DIR}/16/places/"folder*.svg
+        sed -i '/\id="bottom_layer"/s/ opacity="0.5"//' "${THEME_DIR}/16/places/"folder*.svg
+        sed -i "s/color:#ffffff/color:#F6C177/g" "${THEME_DIR}/scalable/places/"default-*.svg
+        sed -i "s/${theme_color}/#F6C177/g" "${THEME_DIR}/scalable/places/"default-user-desktop.svg
+        sed -i '/\id="highlight"/s/opacity=".25"/opacity="0"/' "${THEME_DIR}/scalable/places/"default-user-desktop.svg
+        sed -i "s/#5294e2/#F6C177/g" "${THEME_DIR}/scalable/devices/"*.svg "${THEME_DIR}/32/devices/"*.svg
+if [[ "$1" == "noobilla" ]]; then
+        sed -i '/\id="shadow"/s/#000000/#8A80E0/' "${THEME_DIR}/scalable/apps/"*.svg "${THEME_DIR}/scalable/places/"default-*.svg
+        sed -i '/\id="shadow"/s/ opacity=".2"//' "${THEME_DIR}/scalable/apps/"*.svg "${THEME_DIR}/scalable/places/"default-*.svg
+        sed -i '/\id="bottom_layer"/s/#44475a/#8A80E0/' "${THEME_DIR}/16/places/"folder*.svg
+        sed -i '/\id="bottom_layer"/s/ opacity="0.5"//' "${THEME_DIR}/16/places/"folder*.svg
+        sed -i "s/color:#ffffff/color:#8A80E0/g" "${THEME_DIR}/scalable/places/"default-*.svg
+        sed -i "s/${theme_color}/#8A80E0/g" "${THEME_DIR}/scalable/places/"default-user-desktop.svg
+        sed -i '/\id="highlight"/s/opacity=".25"/opacity="0"/' "${THEME_DIR}/scalable/places/"default-user-desktop.svg
+        sed -i "s/#5294e2/#8A80E0/g" "${THEME_DIR}/scalable/devices/"*.svg "${THEME_DIR}/32/devices/"*.svg
       elif [[ "$1" == "grey" ]]; then
         sed -i "s/color:#ffffff/color:#666666/g" "${THEME_DIR}/scalable/places/"default-*.svg
         sed -i "s/#5294e2/#666666/g" "${THEME_DIR}/scalable/devices/"*.svg "${THEME_DIR}/32/devices/"*.svg
